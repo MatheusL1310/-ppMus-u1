@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Museu UNIVALI</string>
+    <string name="buscar_pelo_qr_code">BUSCAR PELO QR CODE</string>
+    <string name="url_servidor">http://104.197.57.197/aula/museuunivali/</string>
+</resources>
