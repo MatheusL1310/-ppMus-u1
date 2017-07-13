@@ -65,27 +65,23 @@ public class InfoAnimal extends AppCompatActivity {
         tvGestacao.setText(a.getGestacao());
         tvCuriosidades.setText(a.getCuriosidades());
 
-//        String urlServidor = tvNome.getContext().getString(R.string.url_servidor);
-//        urlServidor += a.getFotografia();
-//
-//        VolleySingleton.getInstance(tvNome.getContext()).getImageLoader().get(
-//                urlServidor,
-//                new ImageLoader.ImageListener() {
-//                    @Override
-//                    public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-//                        ivFoto.setImageBitmap( response.getBitmap() );
-//                    }
-//
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("univali", "Falha imagem ");
-//                    }
-//                }
-//        );
+        String urlServidor = tvNome.getContext().getString(R.string.url_servidor);
+        urlServidor += a.getFotografia();
 
+        VolleySingleton.getInstance(tvNome.getContext()).getImageLoader().get(
+                urlServidor,
+                new ImageLoader.ImageListener() {
+                    @Override
+                    public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                        ivFoto.setImageBitmap( response.getBitmap() );
+                    }
 
-
-
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("univali", "Falha imagem ");
+                    }
+                }
+        );
     }
 
 }

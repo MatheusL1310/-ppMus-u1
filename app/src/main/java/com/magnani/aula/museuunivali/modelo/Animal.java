@@ -40,8 +40,8 @@ public class Animal {
             this.familia = classificacao.getString("família");
             this.genero = classificacao.getString("gênero");
             this.especie = classificacao.getString("espécie");
+            this.id = contador;
             contador++;
-            this.id = 1;
             this.gestacao = origem.getString("gestação");
             this.alimentacao = origem.getString("alimentação");
             this.habitat = origem.getString("habitat");
@@ -59,8 +59,6 @@ public class Animal {
             e.printStackTrace();
         }
     }
-
-
 
     public int getId() {
         return id;

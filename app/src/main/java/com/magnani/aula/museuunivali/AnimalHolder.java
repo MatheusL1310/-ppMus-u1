@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.magnani.aula.museuunivali.modelo.Animal;
+import com.magnani.aula.museuunivali.modelo.AnimalDao;
 import com.magnani.aula.museuunivali.modelo.InfoAnimal;
 import com.magnani.aula.museuunivali.utils.RoundedImageView;
 import com.magnani.aula.museuunivali.utils.VolleySingleton;
@@ -28,6 +29,7 @@ public class AnimalHolder extends RecyclerView.ViewHolder implements View.OnClic
     private ImageView ivImportante;
     private static String position;
     private final Context context;
+    private Animal objAnimal;
 
     public AnimalHolder(View itemView) {
         super(itemView);
@@ -42,8 +44,9 @@ public class AnimalHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     public void atualizaDadosGaveta(final Animal a){
         tvNome.setText( a.getNome() );
-        tvTipo.setText( a.getId() );
-        position = String.valueOf(a.getId());
+        tvTipo.setText( a.getNomeCientifico() );
+        objAnimal = a;
+//        position = String.valueOf(a.getId());
 //        if(!a.isImportante()) {
 //            ivImportante.setVisibility(View.INVISIBLE);
 //        }else{
@@ -60,21 +63,21 @@ public class AnimalHolder extends RecyclerView.ViewHolder implements View.OnClic
                     public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
                         ivIcone.setImageBitmap( response.getBitmap() );
                     }
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("univali", "Falha imagem "+a.getFotografia());
                     }
                 }
         );
-
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(context, InfoAnimal.class);
-        intent.putExtra("position", position);
-        context.startActivity(intent);
+        int pos= objAnimal.getId();
+        Toast.makeText(context, String.valueOf(pos) , Toast.LENGTH_LONG).show();
 
+        Intent intent = new Intent(context, InfoAnimal.class);
+        intent.putExtra("position", String.valueOf(pos));
+        context.startActivity(intent);
     }
 }

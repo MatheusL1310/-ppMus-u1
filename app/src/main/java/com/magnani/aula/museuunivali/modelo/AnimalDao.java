@@ -28,7 +28,4 @@ public class AnimalDao {
         }
         return null;
     }
-
-
-
 }

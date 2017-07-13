@@ -23,8 +23,6 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvResposta;
-
     private ListaFragment listaFragment;
 
     @Override
@@ -54,14 +52,11 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject daVez = response.getJSONObject(i);
                                 Animal animaDaVez = new Animal(daVez);
                                 AnimalDao.obterLista().add(animaDaVez);
-                                Toast.makeText(MainActivity.this, "a", Toast.LENGTH_LONG).show();
                             }
                             listaFragment.atualizaDadosRecyclerView();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-//                        Toast.makeText(MainActivity.this, "OK ", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -72,7 +67,5 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         VolleySingleton.getInstance(this).getRequestQueue().add(jar);
-
-
     }
 }
