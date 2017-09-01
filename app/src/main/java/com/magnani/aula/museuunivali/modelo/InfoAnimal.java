@@ -3,8 +3,10 @@ package com.magnani.aula.museuunivali.modelo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -30,6 +32,7 @@ public class InfoAnimal extends AppCompatActivity {
     private TextView tvCuriosidades;
     private ImageView ivFoto;
     private String position;
+    private LinearLayout lInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class InfoAnimal extends AppCompatActivity {
         tvTempoDeExistencia = (TextView) findViewById(R.id.tvTempoDeExistencia);
         tvGestacao = (TextView) findViewById(R.id.tvGestacao);
         tvCuriosidades = (TextView) findViewById(R.id.tvCuriosidades);
+        lInfo = (LinearLayout) findViewById(R.id.lInfo);
         position = getIntent().getStringExtra("position");
         preencheCampos(position);
 
@@ -83,5 +87,21 @@ public class InfoAnimal extends AppCompatActivity {
                 }
         );
     }
+
+    public void onClickAbreInfo(View V){
+
+        if(lInfo.getVisibility() == View.GONE){
+
+            findViewById(R.id.lInfo).setVisibility(View.VISIBLE);;
+
+        }else {
+
+            findViewById(R.id.lInfo).setVisibility(View.GONE);;
+
+        }
+
+
+    }
+
 
 }
